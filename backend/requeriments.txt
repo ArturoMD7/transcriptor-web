@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+paddleocr
+paddlepaddle
+pdf2image
+numpy
+python-multipart
+python-docx
+pillow
