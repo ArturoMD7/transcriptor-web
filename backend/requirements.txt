@@ -1,6 +1,9 @@
 fastapi
 uvicorn
-pytesseract
+paddleocr
+paddlepaddle==2.6.1
+groq
+numpy
 pdf2image
 python-docx
 pillow

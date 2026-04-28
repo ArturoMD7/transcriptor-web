@@ -37,7 +37,11 @@ async def procesar(
     with open(UPLOAD_PATH, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
 
-    procesar_pdf(UPLOAD_PATH, OUTPUT_PATH, pag_inicio, pag_fin)
+    try:
+        procesar_pdf(UPLOAD_PATH, OUTPUT_PATH, pag_inicio, pag_fin)
+    except Exception as e:
+        from fastapi import HTTPException
+        raise HTTPException(status_code=500, detail=str(e))
 
     return FileResponse(
         OUTPUT_PATH,

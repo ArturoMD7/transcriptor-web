@@ -2,28 +2,58 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>OCR Pemex Tool</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OCR Transcriptor AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
 
+<div class="background-shapes">
+  <div class="shape shape-1"></div>
+  <div class="shape shape-2"></div>
+</div>
+
 <div class="container">
-  <h1>📄 OCR Transcriptor</h1>
-  <p class="subtitle">PDF → Word automático</p>
-
-  <div class="card">
-
-    <input type="file" id="fileInput" accept="application/pdf">
-
-    <div class="row">
-      <input type="number" id="pagInicio" placeholder="Inicio" value="1">
-      <input type="number" id="pagFin" placeholder="Fin (opcional)">
+  <div class="glass-card">
+    <div class="header">
+      <div class="logo-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><path d="M8 13h2"/><path d="M8 17h2"/><path d="M14 13h2"/><path d="M14 17h2"/></svg>
+      </div>
+      <h1>OCR Transcriptor AI</h1>
+      <p class="subtitle">Convierte tus PDFs a Word con Inteligencia Artificial</p>
     </div>
 
-    <button id="btnProcesar" onclick="enviar()">🚀 Procesar</button>
+    <div class="input-group file-upload">
+      <label for="fileInput" class="file-label">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        <span id="fileName">Seleccionar archivo PDF</span>
+      </label>
+      <input type="file" id="fileInput" accept="application/pdf" class="hidden-input">
+    </div>
 
-    <div id="loader" class="loader hidden"></div>
-    <p id="status"></p>
+    <div class="row">
+      <div class="input-group">
+        <label>Página de inicio</label>
+        <input type="number" id="pagInicio" placeholder="1" value="1" min="1">
+      </div>
+      <div class="input-group">
+        <label>Página final</label>
+        <input type="number" id="pagFin" placeholder="Opcional" min="1">
+      </div>
+    </div>
+
+    <button id="btnProcesar" onclick="enviar()">
+      <span>Procesar Documento</span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </button>
+
+    <div id="statusContainer" class="status-container hidden">
+      <div id="loader" class="loader"></div>
+      <p id="status">Preparando...</p>
+    </div>
 
   </div>
 </div>

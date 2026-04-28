@@ -6,6 +6,6 @@ services:
     buildCommand: |
       pip install -r backend/requirements.txt
       apt-get update
-      apt-get install -y tesseract-ocr tesseract-ocr-spa poppler-utils
+      apt-get install -y libgl1-mesa-glx libglib2.0-0 poppler-utils
 
     startCommand: uvicorn backend.main:app --host 0.0.0.0 --port 10000
