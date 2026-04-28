@@ -2,34 +2,32 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Transcriptor OCR</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>OCR Pemex Tool</title>
+  <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
 
 <div class="container">
-  <h1>Transcriptor OCR</h1>
-  <p class="subtitle">Convierte PDFs a Word con OCR + IA</p>
+  <h1>📄 OCR Transcriptor</h1>
+  <p class="subtitle">PDF → Word automático</p>
 
   <div class="card">
+
     <input type="file" id="fileInput" accept="application/pdf">
 
-    <div class="range">
-      <label>Página inicial</label>
-      <input type="number" id="pagInicio" value="1">
+    <div class="row">
+      <input type="number" id="pagInicio" placeholder="Inicio" value="1">
+      <input type="number" id="pagFin" placeholder="Fin (opcional)">
     </div>
 
-    <div class="range">
-      <label>Página final (opcional)</label>
-      <input type="number" id="pagFin">
-    </div>
+    <button id="btnProcesar" onclick="enviar()">🚀 Procesar</button>
 
-    <button onclick="enviar()">Procesar</button>
+    <div id="loader" class="loader hidden"></div>
+    <p id="status"></p>
 
-    <div id="loader" class="hidden">Procesando... ⏳</div>
   </div>
 </div>
 
-<script src="script.js"></script>
+<script src="/static/script.js"></script>
 </body>
 </html>
