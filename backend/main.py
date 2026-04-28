@@ -2,7 +2,7 @@ from fastapi import FastAPI, UploadFile, File
 from fastapi.responses import FileResponse
 import shutil
 import os
-from ocr_service import procesar_pdf
+from backend.ocr_service import procesar_pdf
 
 app = FastAPI()
 
