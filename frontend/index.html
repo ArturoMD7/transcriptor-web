@@ -1,16 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Transcriptor OCR</title>
+  <meta charset="UTF-8">
+  <title>Transcriptor OCR</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h2>Subir PDF</h2>
 
-    <input type="file" id="fileInput" />
+<div class="container">
+  <h1>Transcriptor OCR</h1>
+  <p class="subtitle">Convierte PDFs a Word con OCR + IA</p>
+
+  <div class="card">
+    <input type="file" id="fileInput" accept="application/pdf">
+
+    <div class="range">
+      <label>Página inicial</label>
+      <input type="number" id="pagInicio" value="1">
+    </div>
+
+    <div class="range">
+      <label>Página final (opcional)</label>
+      <input type="number" id="pagFin">
+    </div>
+
     <button onclick="enviar()">Procesar</button>
 
-    <p id="status"></p>
+    <div id="loader" class="hidden">Procesando... ⏳</div>
+  </div>
+</div>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

@@ -1,20 +1,28 @@
+const API_URL = "https://transcriptor-web-7qx3.onrender.com/procesar";
+
 async function enviar() {
-    const fileInput = document.getElementById("fileInput");
-    const status = document.getElementById("status");
+  const fileInput = document.getElementById("fileInput");
+  const loader = document.getElementById("loader");
 
-    if (!fileInput.files.length) {
-        alert("Selecciona un PDF");
-        return;
-    }
+  const pagInicio = document.getElementById("pagInicio").value;
+  const pagFin = document.getElementById("pagFin").value;
 
-    const formData = new FormData();
-    formData.append("file", fileInput.files[0]);
+  if (!fileInput.files.length) {
+    alert("Selecciona un PDF");
+    return;
+  }
 
-    status.innerText = "Procesando...";
+  const formData = new FormData();
+  formData.append("file", fileInput.files[0]);
+  formData.append("pag_inicio", pagInicio);
+  formData.append("pag_fin", pagFin);
 
-    const response = await fetch("https://TU_BACKEND.onrender.com/procesar", {
-        method: "POST",
-        body: formData
+  loader.classList.remove("hidden");
+
+  try {
+    const response = await fetch(API_URL, {
+      method: "POST",
+      body: formData
     });
 
     const blob = await response.blob();
@@ -25,5 +33,10 @@ async function enviar() {
     a.download = "resultado.docx";
     a.click();
 
-    status.innerText = "Listo ✅";
+  } catch (err) {
+    alert("Error");
+    console.error(err);
+  }
+
+  loader.classList.add("hidden");
 }
