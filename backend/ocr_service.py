@@ -61,7 +61,7 @@ def procesar_pdf(input_pdf, output_word, pag_inicio=1, pag_fin=None):
         bottom_crop = int(h * 0.87)  
         img_cropped = img[top_crop:bottom_crop, :]
 
-        result = ocr.ocr(img_cropped, cls=True)
+        result = ocr.ocr(img_cropped)
         texto_pagina_bruto = ""
 
         if result and result[0]:
